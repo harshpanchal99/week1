@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Week 1</title>
+	<style type="text/css">
+		#d1 {
+			color: green;
+		}
+	</style>
+	<script type="text/javascript">
+		document.addEventListener("mousemove", changeCoordinates);
+
+		function showText() {
+			var para = document.getElementById('p1');
+			para.innerHTML = "Text Changed !";
+		}
+
+		function showParagraph() {
+			var new_node = document.createElement("p");
+			new_node.innerHTML = "Added Paragraph";
+
+			var div = document.getElementById("d1");
+			div.appendChild(new_node);
+		}
+
+		function removeParagraph() {
+			var div = document.getElementById("d1");
+			div.lastChild.remove();
+		}
+
+		function changeColor() {
+			var div = document.getElementById("d1");
+			div.style.color = "red";
+		}
+
+
+		// function changeCoordinates(event) {
+		// 	var div = document.getElementById("d2");
+		// 	div.innerHTML = "Mouse Coordinates are : X : " +event.pageX+" Y "+event.pageY;
+		// }
+
+		function ontext1Changed(e) {
+			var text2 = document.getElementById("t2");
+			text2.value = e.target.value;
+		}
+
+	</script>
+</head>
+<body>
+	<button onclick="showText()">Change Text </button>
+	<button onclick="showParagraph()">Add Paragraph </button>
+	<button onclick="removeParagraph()">Remove Paragraph </button>
+	<button onclick="changeColor()">Change Color </button>
+	<div id="d1">
+		<p id="p1">Initial Text</p>
+	</div>
+	<!-- <p id="d2">
+		Mouse Coordinates are : 
+	</p> -->
+	Please enter a text: <input onkeyup="ontext1Changed(event)" type="text" /> <br/>
+	Here is what you typed <input disabled id="t2" type="text"/>
+</body>
+</html>
